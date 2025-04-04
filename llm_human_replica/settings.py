@@ -66,7 +66,8 @@ class Settings(BaseSettings):
 
 
 if __name__ == "__main__":
-    
+    settings = Settings.load_settings()
+else:
     settings = Settings.load_settings()
     
     
