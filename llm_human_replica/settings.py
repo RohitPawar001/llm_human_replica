@@ -19,6 +19,50 @@ class Settings(BaseSettings):
     # CometMl 
     COMET_API_KEY : str | None = None
     COMET_PROJECT : str | None = None
+
+    # Mongodb database
+    DATABASE_HOST: str = "mongodb+srv://rppawar491:5jE80ODBsHO9ukx6@cluster0.avcipcb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    DATABASE_NAME:str = "twin"
+
+    # Qdrant vector database
+    USE_QDRANT_CLOUD: bool = False
+    QDRANT_DATABASE_HOST: str = "localhost"
+    QDRANT_DATABASE_PORT: int = 6333
+    QDRANT_CLOUD_URL: str = "str"
+    QDRANT_APIKEY: str | None = None
+
+    # AWS Authentication
+    AWS_REGION: str = "eu-central-1"
+    AWS_ACCESS_KEY: str | None = None
+    AWS_SECRET_KEY: str | None = None
+    AWS_ARN_ROLE: str | None = None
+
+    # AWS SageMaker
+    HF_MODEL_ID: str = "mlabonne/TwinLlama-3.1-8B-DPO"
+    GPU_INSTANCE_TYPE: str = "ml.g5.2xlarge"
+    SM_NUM_GPUS: int = 1
+    MAX_INPUT_LENGTH: int = 2048
+    MAX_TOTAL_TOKENS: int = 4096
+    MAX_BATCH_TOTAL_TOKENS: int = 4096
+    COPIES: int = 1  # Number of replicas
+    GPUS: int = 1  # Number of GPUs
+    CPUS: int = 2  # Number of CPU cores
+
+    SAGEMAKER_ENDPOINT_CONFIG_INFERENCE: str = "twin"
+    SAGEMAKER_ENDPOINT_INFERENCE: str = "twin"
+    TEMPERATURE_INFERENCE: float = 0.01
+    TOP_P_INFERENCE: float = 0.9
+    MAX_NEW_TOKENS_INFERENCE: int = 150
+
+    # RAG
+    TEXT_EMBEDDING_MODEL_ID: str = "sentence-transformers/all-MiniLM-L6-v2"
+    RERANKING_CROSS_ENCODER_MODEL_ID: str = "cross-encoder/ms-marco-MiniLM-L-4-v2"
+    RAG_MODEL_DEVICE: str = "cpu"
+
+    # LinkedIn Credentials
+    LINKEDIN_USERNAME: str | None = None
+    LINKEDIN_PASSWORD: str | None = None
+
     
     @property
     def OPENAI_MAX_TOKEN_WINDOW(self) -> int:
@@ -65,9 +109,8 @@ class Settings(BaseSettings):
             )
 
 
-if __name__ == "__main__":
-    settings = Settings.load_settings()
-else:
-    settings = Settings.load_settings()
+
+settings = Settings.load_settings()
+
     
     
